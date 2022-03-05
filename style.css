@@ -1,0 +1,7 @@
+a.selected::before {
+  content: "✅ ";
+}
+
+input.edit {
+  display: none;
+}

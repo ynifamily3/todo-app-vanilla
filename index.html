@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+    <title>To Do</title>
+  </head>
+  <body>
+    <template id="todo-item">
+      <li>
+        <div class="view">
+          <input type="checkbox" class="toggle" />
+          <label></label>
+          <button class="destroy">X</button>
+        </div>
+        <input class="edit" />
+      </li>
+    </template>
+    <template id="todo-app">
+      <section id="todoapp">
+        <header>
+          <h1>할 일</h1>
+          <input id="new-todo" placeholder="할 일을 입력하세요." autofocus />
+        </header>
+        <section>
+          <input id="toggle-all" type="checkbox" />
+          <label for="toggle-all">모두 완료</label>
+          <ul id="todo-list" data-component="todos"></ul>
+        </section>
+        <footer id="footer">
+          <span id="todo-count" data-component="counter">1 항목 남음</span>
+          <ul id="filters" data-component="filters">
+            <li>
+              <a href="#/">전체</a>
+            </li>
+            <li>
+              <a href="#/active">진행중</a>
+            </li>
+            <li>
+              <a href="#/completed">완료</a>
+            </li>
+          </ul>
+          <button id="clear-completed">완료된 항목 삭제</button>
+        </footer>
+        <footer id="info">
+          <p>더블클릭으로 할 일 수정 가능함</p>
+        </footer>
+      </section></template
+    >
+    <div id="root">
+      <div data-component="app"></div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
