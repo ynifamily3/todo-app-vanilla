@@ -1,9 +1,9 @@
 const registry = {};
 
 const renderWrapper = (component) => {
-  return (targetElement, state) => {
+  return (targetElement, state, events) => {
     // 컴포넌트 제조기를 받아서 컴포넌트를 생성한다.
-    const element = component(targetElement, state);
+    const element = component(targetElement, state, events);
     // 생성된 컴포넌트에서 자식 컴포넌트를 찾는다.
     const childComponents = element.querySelectorAll("[data-component]");
 
@@ -16,7 +16,7 @@ const renderWrapper = (component) => {
         return;
       }
 
-      target.replaceWith(child(target, state));
+      target.replaceWith(child(target, state, events));
     });
 
     return element;
@@ -27,12 +27,12 @@ const add = (name, component) => {
   registry[name] = renderWrapper(component);
 };
 
-const renderRoot = (root, state) => {
+const renderRoot = (root, state, events) => {
   const cloneComponent = (root) => {
     return root.cloneNode(true);
   };
 
-  return renderWrapper(cloneComponent)(root, state);
+  return renderWrapper(cloneComponent)(root, state, events);
 };
 
 export default {
